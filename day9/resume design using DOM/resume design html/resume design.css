@@ -1,0 +1,15 @@
+.container{background-color: lightgoldenrodyellow;padding: 10px;}
+.gray {background-color:gray;height:100%;width:100%;}
+.p {text-align:center}
+.lightgray {background-color:lightgray;height:15%;width:100%}
+.pic {display:block;height:50%;margin:0 auto;border: 3px dotted orange;
+    border-radius: 50%;}
+.pro {height:7%;margin:0 2% -2% 0}
+.pre {height:8%;margin:0 2% -1% 0}
+.column1 {float:left;width:45%;border-right:3px solid gray;margin-right:25px;padding:15px}
+.column2{float:left;width:45%;padding:15px}
+.row:after {clear:both;content:"";display:table;padding:10px}
+.name {font-weight:bold;font-size:180%;text-align:center;background-color:orange;height:220%;width:40%;margin:-2% 0 0 30%;border-radius:5px;}
+body {padding:150px;font-family:arial}
+.center{text-align: center;}
+.event{width:100%}
