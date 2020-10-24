@@ -1,0 +1,61 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 2px;
+    width: 1300px;
+  }
+  .grid-item{
+      margin: 3%;
+      background-color: #979ea5;
+      width:400px;
+        height: 500px;
+      }
+.grid-img{
+  width: 400px;
+  height:250px;
+}
+.add{background-color: green;font-size:xx-large;}
+.add:hover{background-color: chartreuse;}
+.ad{float: right;}
+.div22{padding: 25px 15px;border-top: 2px solid black;}
+.head,.para{padding: 5px 15px 0;}
+.pr{font-size: xx-large ;font-weight: bold;}
+nav{margin:3% 15% 0}
+a{background-color: chocolate;color: cornsilk;font-size: large;padding:10px 10px 0;margin: 0 5px;border-radius: 30px;}
+a:hover{background-color: rgb(255, 194, 41);}
+
+
+
+
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+  [class*="col-"] {
+    width: 100%;
+  }
+} 
+
+@media only screen and (max-width: 1350px) {
+ .grid-container{
+  grid-template-columns: auto auto;
+}
+}
+
+@media only screen and (max-width: 700px) {
+  .grid-container{
+    grid-template-columns: auto;
+  }
+  body{margin-left:45%;}
+ }
