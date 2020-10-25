@@ -1,0 +1,85 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    background-image: linear-gradient(right lightgray lightblue,blue,darkblue);
+  }
+  #container {
+    width: 500px;
+    height: 250px;
+    background-color: rgb(7, 91, 248);
+    margin: 20px auto;
+  }
+  #calculator {
+    width: 450px;
+    height: 520px;
+    background-color: rgb(255, 241, 241);
+    margin: 0 auto;
+    top: 20px;
+    position: relative;
+    border-radius: 5px;
+    border: 5px solid crimson;
+
+  }
+  #result {
+    height: 120px;
+    border-bottom: 5px solid black;
+  }
+  #history1 {
+    text-align: right;
+    height: 20px;
+    margin: 0 20px;
+    padding-top: 20px;
+    font-size: 15px;
+    color: rgb(63, 61, 61);
+  }
+  #history_value{
+      background-color: rgb(119, 119, 119);
+      color:white;
+      margin:-5px -18px;
+  }
+  #output {
+    text-align: right;
+    height: 60px;
+    margin: 10px 20px;
+    font-size: 30px;
+  }
+  #keyboard {
+    height: 400px;
+  }
+  .operator,
+  .number {
+    width: 80px;
+    height: 50px;
+    margin: 15px;
+    float: left;
+    border-radius: 20%;
+    border-width: 1;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  #equal{
+      width:170px;
+      margin-left;: 25px;
+      font-size: 23px
+  }
+
+  .number,.operator {
+    background-color: #eaff29;
+    color: rgb(70, 32, 32);
+  }
+  .number:hover ,.operator:hover{
+    background-color: #00b99a;
+    color: rgb(70, 32, 32);
+  }
+  .number,
+  .operator {
+    cursor: pointer;
+  }
+  .operator:active,
+  .number:active {
+    font-size: 13px;
+  }
+  .operator:focus,
+  .number:focus, {
+    outline: 0;
+  }
+
