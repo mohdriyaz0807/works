@@ -1,0 +1,11 @@
+setTimeout(function(){ p.innerHTML=("10..");
+    setTimeout(function(){p.innerHTML=("9..");
+        setTimeout(function(){p.innerHTML=("8..");
+            setTimeout(function(){p.innerHTML=("7..");
+                setTimeout(function(){p.innerHTML=("6..");
+                    setTimeout(function(){p.innerHTML=("5..");
+                        setTimeout(function(){p.innerHTML=("4..");
+                            setTimeout(function(){p.innerHTML=("3..");
+                                setTimeout(function(){p.innerHTML=("2..");
+                                setTimeout(function(){p.innerHTML=("1");
+                                    setTimeout(function(){p.innerHTML=("Happy New Year!")},1000)},1000)},1000)},1000)},1000)},1000)},1000)},1000)},1000)},1000)},1000)
