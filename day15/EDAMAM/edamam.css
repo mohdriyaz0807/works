@@ -1,0 +1,26 @@
+#inp,#btn{margin:10% 0;border-radius:5px;border: 3px solid orange;padding: 8px;}
+#btn:hover{background-color: rgb(252, 238, 92);}
+body{background-color: lemonchiffon;}
+#row2{padding: 15px;margin: 2px;}
+.container{margin-top:-25%}
+#text{color: rgb(255, 69, 45) ;font-family: monospace;font-size: 400%;font-weight: bolder;outline-color: rgb(28, 133, 42); background-image: linear-gradient(to right,yellow, lightyellow);border-radius: 5px;}
+.d-block{border-radius: 0 0 75px 75px;}
+#btn2,#pa2{background-color: peru;font-weight: bolder;border-radius: 5px}
+#btn2:hover,#pa2:hover{background-color: yellow;font-weight: bolder;border-radius: 10px;}
+
+
+@media only screen and (max-width: 800px) and (min-width:400px){
+    #text {
+      font-size: 200%;
+    }
+  }
+  @media only screen and (max-width: 400px) {
+    #text {
+      font-size: 100%;
+    }
+  }
+  @media only screen and (max-width: 1000px) and (min-width:800px){
+    #text {
+      font-size: 300%;
+    }
+  }
