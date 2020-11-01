@@ -162,7 +162,6 @@ $('.collapse').collapse('hide')
     div2.append(col)
     
     })
-    console.log(rep)
   
 })
 .catch((err)=>{
