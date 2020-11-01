@@ -70,9 +70,9 @@ head.append(empty,input,button)
 div1.append(text1,head)
 
 function my(){
-
+        document.getElementById('row2').innerHTML=''
   
-return fetch('https://api.edamam.com/search?&app_id=95c8f0a5&from=0&to=5&app_key=18c1d9826d50c5996f7372d2296d38d1&q='+document.getElementById('inp').value)
+return fetch('https://api.edamam.com/search?&app_id=95c8f0a5&app_key=18c1d9826d50c5996f7372d2296d38d1&q='+document.getElementById('inp').value)
 
 .then((res)=>{
         return res.json()
