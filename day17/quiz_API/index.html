@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>Quick Quiz</title>
+        <style>
+            .container {
+                margin-top: 15%;
+                text-align: center;
+            }
+
+            .btn {
+                width: 25%;
+                border: 2px solid rgb(0, 0, 0);
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <script>
+            var div = document.createElement('div')
+            div.setAttribute('class', 'container')
+
+
+            var h1 = document.createElement('h1')
+            h1.setAttribute('class', 'tex')
+            h1.innerHTML = "Quick Quiz"
+
+            var btn1 = document.createElement('a')
+            btn1.setAttribute('id', 'play')
+            btn1.innerHTML = "Play"
+            btn1.setAttribute("role", "button")
+            btn1.setAttribute('class', 'btn btn-primary')
+            btn1.setAttribute('href', 'game.html')
+
+            var br = document.createElement('br')
+
+            var btn2 = document.createElement('a')
+            btn2.setAttribute('id', 'highScores')
+            btn2.innerHTML = "High Scores"
+            btn2.setAttribute("role", "button")
+            btn2.setAttribute('class', 'btn btn-primary')
+            btn2.setAttribute('href', 'highscore.html')
+
+
+            div.append(h1, btn1, br, btn2)
+            document.body.append(div)
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    </body>
+
+</html>
