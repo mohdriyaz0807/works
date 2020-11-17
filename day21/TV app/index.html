@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV player</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script src="main.js" defer></script>
+    <script defer>
+    function playVid() {
+        vid.play();
+    }
+    
+    function pauseVid() {
+        vid.pause();
+    }
+    function plus(){
+        vid.volume +=0.1
+    }
+    function minus(){
+        vid.volume -=0.1
+    }
+    
+    </script>
+    <div class="container">
+        <div class="row">
+                    <div class="col-12 " id="tv">
+                        <video id="player" width="480" controls autoplay>
+                            <source  src="" type="video/mp4" id='source'>
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="col-12" id='remote'>
+                            <button type="button"  class=" btn btn-secondary" onclick="playVid()">
+                                <i class="fa fa-play"></i>
+                                </button>
+                            <button type="button" class=" btn btn-secondary" onclick="pauseVid()">
+                                <i class="fa fa-pause"></i>
+                                </button>
+                            <button type="button"  class=" btn btn-secondary" onclick="prev()">
+                                <i class="fa fa-angle-left"></i>
+                                </button>
+                            <button type="button"  class=" btn btn-secondary" onclick="next()">
+                                <i class="fa fa-angle-right"></i>
+                                </button>
+                            <button type="button"  class=" btn btn-secondary" onclick="plus()">
+                                <i class="fa fa-plus"></i>
+                                </button>
+                            <button type="button"  class=" btn btn-secondary" onclick="minus()">
+                                <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                    </div>
+        </div>
+    </div>
+</body>
+</html
