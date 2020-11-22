@@ -1,0 +1,36 @@
+.scoreBoard{
+    display: flex;
+    justify-content: space-around;
+    margin: 5px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+.resultBoard{
+    display: flex;
+    justify-content: space-around;
+}
+h3{
+    text-align: center;
+}
+.resultBox{
+    display: none;
+}
+.card-title{
+    color:blue;
+    font-size: xx-large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body{
+    background-image: linear-gradient(to right,yellow,lightyellow,blue )
+}
+.table-bordered{
+    border: 1px solid black;
+}
+
+@media only screen and (max-width: 600px) {
+    .resultBoard{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+}
