@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"></head>
+    <style>
+        .signOut{float: right;}
+        .submit{text-align:center}
+        body{background-color: lightgoldenrodyellow;}
+        .title{font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;text-align: center;}
+        .heading{font-size: larger;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="title">URL SHORTENER</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-8">
+                <div class="form-group">
+                <label for='longurl' class="heading">Long URL :</label>
+                <input type='text' class="form-control" id='longurl'>
+            </div>
+            </div>
+            <div class="signOut col-4 form-group">
+                <button class="btn btn-warning " type="button" onclick="signOut()">Sign Out</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-12 submit">
+                <button type="button" class="btn btn-success " onclick="getShortUrl()">Submit</button>
+            </div>
+        </div>
+    </div>
+        <table class="table">
+            <thead>
+                <tr>
+                <th>Longurl</th>
+                <th>Shorturl</th>
+                <th>Count</th>
+            </tr>
+            </thead>
+            <tbody id='table'>
+
+            </tbody>
+        </table>
+    <script>
+        let url = 'http://localhost:3000'
+        let id = window.location.href.split('=')
+        async function getShortUrl(){
+            let longURL = document.getElementById('longurl').value
+            let shortURL = Math.random().toString(36).substring(7);
+            let api = await fetch(url+'/shortUrl/'+id[1],{
+                method:"PUT",
+                headers:{"Content-type":"application/json",},
+                body:JSON.stringify({longURL,shortURL})
+            })
+            let res = await api.json()
+            console.log(res)
+            getData()
+        }
+
+        async function getData(){
+            let api = await fetch(url+'/dashboard/'+id[1],{
+        method : 'GET',
+        headers:{"Content-type":"application/json",
+                authorization:  localStorage.getItem('token')
+                },
+    })
+            let res = await api.json()
+            if(res.message=="session ended"){
+                swal({
+                title:'SESSION ENDED',
+                text:'Please Login Again',
+                icon:`${res.icon}`
+            })
+            }else if(res.message=="token not authorized"){
+                swal({
+                title:'INVALID TOKEN',
+                icon:`${res.icon}`
+            })
+            }else{
+                console.log(res)
+                document.getElementById('table').innerHTML=""
+            res.url.forEach((ele)=>{ 
+                let tr = document.createElement('tr')
+                let td1 = document.createElement('td')
+                td1.innerHTML = ele.longURL
+                let td2 = document.createElement('td')
+                td2.innerHTML = `<a href="http://localhost:3000/getLongUrl/${ele.shortURL}" target="_blank">${ele.shortURL}</a>`
+                let td3 = document.createElement('td')
+                td3.innerHTML= ele.count
+                tr.append(td1,td2,td3)
+                document.getElementById('table').append(tr)
+            })
+        }
+        }
+
+        function signOut(){
+        localStorage.setItem('token','')
+        window.location.href = 'index.html'
+        }
+
+getData()
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+</html>
