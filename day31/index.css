@@ -1,0 +1,14 @@
+#dp{width:50%}
+.pic{text-align: center;}
+.fa{font-size: xx-large;}
+.head{margin: auto}
+#bio{text-align: justify;}
+.bio{margin-top: 25px;}
+.info{background-color:lightgray;padding: 10px;border-radius: 10px;box-shadow: 10px 5px gray;}
+.edit{text-align: right;}
+.section{background-color:rgb(208, 241, 154);padding: 10px;border-radius: 10px;box-shadow: 4px 2px gainsboro;}
+body{font-family: monospace;margin:2% 0% 10%}
+
+@media only screen and (max-width:450px){
+    #bio,.section,.section1{font-size:medium}
+}

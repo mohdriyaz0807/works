@@ -1,0 +1,6 @@
+#profilepic{width: 200px;height:200px;border-radius: 50%;opacity: 0.7;}
+.pic{background-color:lightslategray;padding:3% 0% 3% 40%}
+.email{display: block}
+:required{border-right:5px solid red}
+.main{box-shadow:5px 5px 5px 5px #888888;padding: 25px;}
+.Grad{border: #888888;}

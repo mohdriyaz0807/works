@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="edit.css">
+        <title>Edit Profile</title>
+    </head>
+    <body>
+        <div class="container main">
+            <div class="row">
+                <div class="col-12 pic">
+                    <label for="upload"><img id="profilepic" src='https://freesvg.org/img/abstract-user-flat-4.png'></label><br><br>
+                    <input type="file" id="upload" onchange="document.getElementById('profilepic').src = window.URL.createObjectURL(this.files[0])" style="display:none">
+                </div>
+            </div>
+            <hr noshade>
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputfname4">First Name</label>
+                        <input type="text" class="form-control" id="inputfname4" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputlname4">Last Name</label>
+                        <input type="text" class="form-control" id="inputlname4">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control" id="inputemail4" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputnumber">Mobile Number</label>
+                        <input type="number" class="form-control" id="inputnumber" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputdob">Date of Birth</label>
+                        <input type="date" class="form-control dob" id="inputdob" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">Gender</div>
+                            <div class="form-group col-4 col-lg-6">
+                                <label for="inputmale">Male</label>
+                                <input type="radio" id="gender" name="gender" value="Male" required>
+                            </div>
+                            <div class="form-group col-4 col-lg-6">
+                                <label for="inputfemale">Female</label>
+                                <input type="radio" id="gender" name="gender" value="Female">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputAddress1">Address 1</label>
+                        <input type="text" class="form-control" id="inputAddress1" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputAddress2">Address 2</label>
+                        <input type="text" class="form-control" id="inputAddress2">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control" id="inputCity" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputState">State</label>
+                        <input type="text" class="form-control" id="inputState" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputCountry">Country</label>
+                        <input type="text" class="form-control" id="inputCountry" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputZip">Zip</label>
+                        <input type="number" class="form-control" id="inputZip" required>
+                    </div>
+                </div><hr noshade>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="form-row ">
+                            <div class="form-group col-md-9">
+                                <p>Education</p>
+                            </div>
+                            
+                                <div class="form-group col-6">
+                                    <input type="text" class="form-control" id="inputedu4" placeholder="Name of Institution" required><br>
+                                </div>
+                                <div class="form-group col-3">
+                                    <input type="number" class="form-control cgpa" id="inputedu4marks" min="1" max="10" step="0.01" placeholder="CGPA/%" required><br>
+                                </div>
+                                <div class="form-group col-6">
+                                    <input type="text" class="form-control" id="inputcourse4" placeholder="Course" required><br>
+                                </div>
+                                <div class="form-group col-3">
+                                    <input type="number" class="form-control year" id="inputedu4year" min="2000" max="2020" step="1" placeholder="Year" required><br>
+                                </div>
+                            
+                                <div class="form-group col-6">
+                                    <input type="text" class="form-control" id="inputedu5" placeholder="Name of Institution"><br>
+                                </div>
+                                <div class="form-group col-3">
+                                    <input type="number" class="form-control percent" id="inputedu5marks" min="1" max="100" step="0.01" placeholder="%"><br>
+                                </div>
+                                <div class="form-group col-6">
+                                    <input type="text" class="form-control" id="inputcourse5" placeholder="HSC"><br>
+                                </div>
+                                <div class="form-group col-3">
+                                    <input type="number" class="form-control year" id="inputedu5year" min="2000" max="2020" step="1" placeholder="Year"><br>
+                                </div>
+                            
+                                <div class="form-group col-6">
+                                    <input type="text" class="form-control " id="inputedu6" placeholder="Name of Institution"><br>
+                                </div>
+                                <div class="form-group col-3">
+                                    <input type="number" class="form-control percent" id="inputedu6marks" min="1" max="100" step="0.01" placeholder="%"><br>
+                                </div>
+                                <div class="form-group col-6">
+                                    <input type="text" class="form-control" id="inputcourse6" placeholder="SSLC"><br>
+                                </div>
+                                <div class="form-group col-3">
+                                    <input type="number" class="form-control year" id="inputedu6year" min="2000" max="2020" step="1" placeholder="Year"><br>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <div class="form-row Work">
+                            <div class="form-group col-9">
+                                <p>Work Experience</p>
+                            </div>
+                            <div class="form-group col-3">
+                                <button type="button" class="btn btn-success" id="addwork" onclick="addWork()">Add</button>
+                            </div>
+                        <div class="form-row" id="Work">
+                            
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                <div class="form-row">
+                    <div class="form-group col-sm-9">
+                        <p>Skills</p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <input type="text" class="form-control" id="inputskill" placeholder="Eg : Javascript,HTML strictly seperated by comma as shown">
+                    </div>
+                </div>
+                </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">Social Websites</div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" name="linkedin" id="linkedin" placeholder="Linkedin"><br>
+                        <input type="text" class="form-control" name="Twitter" id="Twitter" placeholder="Twitter"><br>
+                        <input type="text" class="form-control" name="GitHub" id="GitHub" placeholder="GitHub">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">User Bio :</div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <textarea class="form-control" name="bio" id="bio" cols="30" rows="5" maxlength="500" placeholder="Write about yourself...Not more than 500 characters"></textarea>
+                    </div>
+                </div><br>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <button type="button" class="btn btn-warning form-control" onclick="window.location.href='index.html'">Back</button>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <button type="reset" class="btn btn-secondary form-control">Reset</button>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <button type="button" class="btn btn-primary form-control" onclick="send()">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="edit.js"></script>
+    </body>
+</html>
