@@ -1,0 +1,11 @@
+.edit{width:50%}
+#forname{margin-left: 20px;}
+.add{float:right}
+.container{margin-top: 10px;}
+
+
+/* 
+@media screen and (max-width:700px){
+    .mentors{float: left;}
+    .students{float: left;}
+} */
