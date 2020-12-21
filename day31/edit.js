@@ -1,4 +1,4 @@
-let url = 'https://portfolio-edit-frontend.herokuapp.com/'
+let url = 'https://portfolio-edit-frontend.herokuapp.com'
 
 let i = 1
 function addWork() {
