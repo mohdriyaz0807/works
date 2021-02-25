@@ -70,8 +70,9 @@ head.append(empty,input,button)
 div1.append(text1,head)
 
 function my(){
-        document.getElementById('row2').innerHTML=''
-  
+      
+      document.getElementById('row2').innerHTML=''
+
 return fetch('https://api.edamam.com/search?&app_id=95c8f0a5&app_key=18c1d9826d50c5996f7372d2296d38d1&q='+document.getElementById('inp').value)
 
 .then((res)=>{
@@ -80,7 +81,7 @@ return fetch('https://api.edamam.com/search?&app_id=95c8f0a5&app_key=18c1d9826d5
 
 .then((rep)=>{
     
-    rep.hits.forEach(elem  => {
+    rep.hits.forEach((elem,index)  => {
     var col=document.createElement('div')
     col.setAttribute('class','col mb-4')
     col.setAttribute('id','cont')
@@ -108,16 +109,17 @@ return fetch('https://api.edamam.com/search?&app_id=95c8f0a5&app_key=18c1d9826d5
     pa2.type='button'
     pa2.setAttribute('id','pa2')
     pa2.setAttribute('aria-expanded','false')
-    pa2.setAttribute('aria-controls',"divv")
+    pa2.setAttribute('aria-controls',`divv${index}`)
     pa2.setAttribute('data-placement','top')
     pa2.setAttribute('data-toggle',"collapse")
-    pa2.setAttribute('data-target',"#divv")
+    pa2.setAttribute('data-target',`#divv${index}`)
     pa2.innerHTML='Nutrients'
 
     var divv=document.createElement('div')
-    divv.setAttribute('id','divv')
+    divv.setAttribute('id',`divv${index}`)
+    divv.setAttribute('class','collapse')
     var table=document.createElement('table')
-    table.id='card card-body'
+    table.setAttribute=('class','card card-body')
     var tr1=document.createElement('tr')
     tr1.innerHTML=`<td>${elem.recipe.totalNutrients.VITA_RAE.label}</td><td>${elem.recipe.totalNutrients.VITA_RAE.quantity.toFixed(2)}</td><td>${elem.recipe.totalNutrients.VITA_RAE.unit}</td>`
     var tr2=document.createElement('tr')
@@ -130,7 +132,6 @@ return fetch('https://api.edamam.com/search?&app_id=95c8f0a5&app_key=18c1d9826d5
     tr5.innerHTML=`<td>${elem.recipe.totalNutrients.VITD.label}</td><td>${elem.recipe.totalNutrients.VITD.quantity.toFixed(2)}</td><td>${elem.recipe.totalNutrients.VITD.unit}</td>`
     table.append(tr1,tr2,tr3,tr4,tr5)
 
-$('.collapse').collapse('hide')
 
     var p2=document.createElement('p')
     p2.setAttribute('class',"card-text")
@@ -167,7 +168,6 @@ $('.collapse').collapse('hide')
 .catch((err)=>{
     console.log(err)
 })
-
 
 }
 
