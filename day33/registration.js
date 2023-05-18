@@ -4,7 +4,7 @@ var mobile=document.getElementById('exampleInputnumber1').value
 var email=document.getElementById('exampleInputEmail1').value
 var pwd1=document.getElementById('exampleInputPassword1').value
 
-var url='http://localhost:3000/register'
+var url=`${window.backendURL}/register`
 var jsonInput={Name:name,MobileNumber:mobile,email:email,password:pwd1}
 
 if(name!=''&&mobile!=''&&email!=''&&pwd1!=''){

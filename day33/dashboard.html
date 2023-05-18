@@ -1,20 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"></head>
-    <style>
-        .signOut{float: right;}
-        .submit{text-align:center}
-        body{background-color: lightgoldenrodyellow;}
-        .title{font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;text-align: center;}
-        .heading{font-size: larger;}
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
+<style>
+    .signOut {
+        float: right;
+    }
+
+    .submit {
+        text-align: center
+    }
+
+    body {
+        background-color: lightgoldenrodyellow;
+    }
+
+    .title {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-align: center;
+    }
+
+    .heading {
+        font-size: larger;
+    }
+
+    .dashboard {
+        margin: 50px auto 0;
+        width: 500px;
+    }
+
+    .table {
+        height: calc(100vh - 260px);
+        overflow: scroll;
+    }
+
+    .loader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .loader-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #fff;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media screen and (max-width:688px) {
+        .dashboard {
+            width: 80%;
+        }
+    }
+</style>
+</head>
+
 <body>
-    <div class="container">
+    <script src="config.js"></script>
+    <script>
+        function showLoader() {
+            $('#loading').show();
+        }
+
+        function hideLoader() {
+            $('#loading').hide();
+        }
+    </script>
+    <div id="loading" class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+    <div class="dashboard">
+        <div class="signOut">
+            <button class="btn btn-warning " type="button" onclick="signOut()">Sign Out</button>
+        </div>
         <div class="row">
             <div class="col-12">
                 <h3 class="title">URL SHORTENER</h3>
@@ -23,12 +111,9 @@
         <div class="row">
             <div class="form-group col-8">
                 <div class="form-group">
-                <label for='longurl' class="heading">Long URL :</label>
-                <input type='text' class="form-control" id='longurl'>
-            </div>
-            </div>
-            <div class="signOut col-4 form-group">
-                <button class="btn btn-warning " type="button" onclick="signOut()">Sign Out</button>
+                    <label for='longurl' class="heading">Long URL :</label>
+                    <input type='text' class="form-control" id='longurl'>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -36,82 +121,110 @@
                 <button type="button" class="btn btn-success " onclick="getShortUrl()">Submit</button>
             </div>
         </div>
-    </div>
-        <table class="table">
-            <thead>
-                <tr>
-                <th>Longurl</th>
-                <th>Shorturl</th>
-                <th>Count</th>
-            </tr>
-            </thead>
-            <tbody id='table'>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Longurl</th>
+                        <th>Shorturl</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody id='table'>
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <script>
-        let url = 'http://localhost:3000'
         let id = window.location.href.split('=')
-        async function getShortUrl(){
+        async function getShortUrl() {
+            showLoader();
             let longURL = document.getElementById('longurl').value
             let shortURL = Math.random().toString(36).substring(7);
-            let api = await fetch(url+'/shortUrl/'+id[1],{
-                method:"PUT",
-                headers:{"Content-type":"application/json",},
-                body:JSON.stringify({longURL,shortURL})
+            let api = await fetch(window.backendURL + '/shortUrl/' + id[1], {
+                method: "PUT",
+                headers: { "Content-type": "application/json", },
+                body: JSON.stringify({ longURL, shortURL })
             })
             let res = await api.json()
-            console.log(res)
+            if (res) {
+                document.getElementById('longurl').value = ""
+            }
             getData()
+            hideLoader();
         }
 
-        async function getData(){
-            let api = await fetch(url+'/dashboard/'+id[1],{
-        method : 'GET',
-        headers:{"Content-type":"application/json",
-                authorization:  localStorage.getItem('token')
-                },
-    })
-            let res = await api.json()
-            if(res.message=="session ended"){
+        async function getData() {
+            showLoader();
+            try {
+                let api = await fetch(window.backendURL + '/dashboard/' + id[1], {
+                    method: 'GET',
+                    headers: {
+                        "Content-type": "application/json",
+                        authorization: localStorage.getItem('token')
+                    },
+                })
+                let res = await api.json()
+                if (res.message == "session ended") {
+                    swal({
+                        title: 'SESSION ENDED',
+                        text: 'Please Login Again',
+                        icon: `${res.icon}`
+                    })
+                } else if (res.message == "token not authorized") {
+                    swal({
+                        title: 'INVALID TOKEN',
+                        icon: `${res.icon}`
+                    })
+                } else {
+                    document.getElementById('table').innerHTML = ""
+                    res.url.forEach((ele) => {
+                        let tr = document.createElement('tr')
+                        let td1 = document.createElement('td')
+                        td1.innerHTML = ele.longURL
+                        let td2 = document.createElement('td')
+                        td2.innerHTML = `<a href="${window.backendURL}/getLongUrl/${ele.shortURL}" target="_blank">${ele.shortURL}</a>`
+                        let td3 = document.createElement('td')
+                        td3.innerHTML = ele.count
+                        tr.append(td1, td2, td3)
+                        document.getElementById('table').append(tr)
+                    })
+                }
+            } catch (err) {
+                hideLoader();
                 swal({
-                title:'SESSION ENDED',
-                text:'Please Login Again',
-                icon:`${res.icon}`
-            })
-            }else if(res.message=="token not authorized"){
-                swal({
-                title:'INVALID TOKEN',
-                icon:`${res.icon}`
-            })
-            }else{
-                console.log(res)
-                document.getElementById('table').innerHTML=""
-            res.url.forEach((ele)=>{ 
-                let tr = document.createElement('tr')
-                let td1 = document.createElement('td')
-                td1.innerHTML = ele.longURL
-                let td2 = document.createElement('td')
-                td2.innerHTML = `<a href="http://localhost:3000/getLongUrl/${ele.shortURL}" target="_blank">${ele.shortURL}</a>`
-                let td3 = document.createElement('td')
-                td3.innerHTML= ele.count
-                tr.append(td1,td2,td3)
-                document.getElementById('table').append(tr)
-            })
-        }
+                    title: 'Oops!',
+                    text: err.message,
+                    icon: 'error'
+                })
+            }
+            hideLoader();
         }
 
-        function signOut(){
-        localStorage.setItem('token','')
-        window.location.href = 'index.html'
+        function signOut() {
+            swal({
+                title: 'Sign Out',
+                text: 'Are you sure you want to sign out ?',
+                icon: 'warning',
+                buttons: ['No', 'Yes']
+            }).then((isConfirm) => {
+                if (isConfirm) {
+                    localStorage.setItem('token', '')
+                    window.location.href = 'index.html'
+                }
+            });
         }
 
-getData()
+        getData()
 
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
