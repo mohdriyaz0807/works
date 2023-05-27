@@ -118,7 +118,7 @@
         </div>
         <div class="row">
             <div class="form-group col-12 submit">
-                <button type="button" class="btn btn-success " onclick="getShortUrl()">Submit</button>
+                <button type="button" class="btn btn-success " disabled id="submit" onclick="getShortUrl()">Submit</button>
             </div>
         </div>
         <div class="table">
@@ -137,6 +137,17 @@
         </div>
     </div>
     <script>
+        const submitButton = document.getElementById("submit");
+        const inputField = document.getElementById('longurl');
+
+        inputField.addEventListener("input", () => {
+        if (inputField.value.trim() !== "") {
+            submitButton.removeAttribute("disabled");
+        } else {
+            submitButton.setAttribute("disabled", true);
+        }
+        });
+
         let id = window.location.href.split('=')
         async function getShortUrl() {
             showLoader();
